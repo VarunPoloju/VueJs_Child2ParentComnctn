@@ -5,7 +5,6 @@
     </header>
 
     <new-friend @add-contact="addContact"></new-friend>
-
     <ul>
       <friend-contact
         v-for="friend in friends"
@@ -16,6 +15,7 @@
         :phone-number="friend.phone"
         :is-favorite="friend.isFavorite"
         @toggle-favorite="toggleFavStatus"
+        @delete="deleteContact"
       ></friend-contact>
     </ul>
   </section>
@@ -59,6 +59,12 @@ export default {
       };
       this.friends.push(newFriendContact);
     },
+
+    deleteContact(friendId) {
+      // return false if found a matching id
+      this.friends = this.friends.filter((friend) => friend.id !== friendId); //if id's are equal we return false, if they are equal we need to remove that, if they are not equal keep it
+
+    }
   },
 };
 </script>

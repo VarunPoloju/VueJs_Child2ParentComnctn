@@ -15,6 +15,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button @click="$emit('delete' ,id)">Delete</button>
   </li>
 </template>
 
@@ -44,7 +45,7 @@ export default {
       default: false,
     },
   },
-  emits: ["toggle-favorite"], //defines which custom events components emit
+  emits: ["toggle-favorite", "delete"], //defines which custom events components emit
   data() {
     return {
       detailsAreVisible: false,
